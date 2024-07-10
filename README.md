@@ -12,13 +12,13 @@ On Linux, install libleveldb-dev
 sudo apt-get install libleveldb-dev
 ```
 ### Using pip
-´´´
+```
 python3 -m pip install -r /path/to/requirements.txt
-´´´
+```
 ### Mysql
-´´´
+```
 mysql < db.sql
-´´´
+```
 
 ## Config
 
@@ -27,9 +27,9 @@ En __main__.py configurar:
 - dir_bitcoin: directorio donde esta la blockchain. Por defecto en la instalacion bitcoin-core esta en '~/.bitcoin'
 
 ## Ejecucion
-´´´
+```
 python3 __main__.py
-´´´
+```
 
 ## Notas
 
