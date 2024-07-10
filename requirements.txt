@@ -1,0 +1,2 @@
+blockchain_parser
+mysql-connector-python
