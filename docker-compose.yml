@@ -1,0 +1,37 @@
+# create 2 service, one with mariadb and one with Dockerfile
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: my_mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: balance
+      MYSQL_USER: user
+      MYSQL_PASSWORD: admin1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  app:
+    build:
+      context: ./
+    container_name: my_python_app
+    depends_on:
+      - mariadb
+    environment:
+      DB_HOST: mariadb
+      DB_USER: user
+      DB_PASSWORD: admin1234
+      DB_NAME: balance
+      BITCOIN_DIR: /usr/src/app/bitcoin
+    # volumes:
+    #   - ~/.bitcoin:/usr/src/app/bitcoin
+    ports:
+      - "5000:5000"
+
+volumes:
+  mariadb_data:
