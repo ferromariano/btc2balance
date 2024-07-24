@@ -19,11 +19,11 @@ COPY ./requirements.txt ./
 # Instalar las dependencias de la aplicación
 RUN pip install -r requirements.txt
 
-COPY ./bd.sql ./
+COPY ./bd.sql .
 
-COPY ./init.sh ./
+COPY ./init.sh .
 
-RUN chmod +x init.sh
+RUN chmod ugo+x init.sh
 # # RUN mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWORD $DB_NAME < db.sql
 # CMD ["mysql", "-h", "$DB_HOST", "-u", "$DB_USER", "-p$DB_PASSWORD", "$DB_NAME", "<", "db.sql"]
 
@@ -31,4 +31,4 @@ COPY . ./
 
 # Ejecutar la aplicación
 # CMD ["python", "./__main__.py"]
-CMD ["./init_db.sh"]
+CMD ["./init.sh"]

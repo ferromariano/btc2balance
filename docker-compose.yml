@@ -15,23 +15,22 @@ services:
       - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
-
   app:
     build:
       context: ./
     container_name: my_python_app
-    depends_on:
-      - mariadb
+    # restart: unless-stopped
+    # depends_on:
+    #   mariadb:
+    #     condition: service_healthy
     environment:
       DB_HOST: mariadb
       DB_USER: user
       DB_PASSWORD: admin1234
       DB_NAME: balance
       BITCOIN_DIR: /usr/src/app/bitcoin
-    # volumes:
-    #   - ~/.bitcoin:/usr/src/app/bitcoin
-    ports:
-      - "5000:5000"
+    volumes:
+      - /tmp/bitcoin:/usr/src/app/bitcoin
 
 volumes:
   mariadb_data:
