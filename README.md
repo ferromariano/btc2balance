@@ -34,3 +34,7 @@ python3 __main__.py
 ## Notas
 
 [blockchain_parser](https://github.com/alecalve/python-bitcoin-blockchain-parser)
+
+
+
+docker-compose down --volumes;  docker-compose up --build
